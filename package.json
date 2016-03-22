@@ -1,0 +1,57 @@
+{
+  "name": "youtube-player",
+  "version": "0.1.0",
+  "description": "Youtube Player Directive",
+  "main": "dist/angular-youtube-player.min.js",
+  "scripts": {
+    "test": "karma start --NODE_ENV=test",
+    "build": "webpack --config webpack/webpack.build.js --NODE_ENV=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opstalent/youtube-player.git"
+  },
+  "keywords": [
+    "youtube",
+    "player",
+    "angular",
+    "events",
+    "directive"
+  ],
+  "author": "BeerCoders <szymon.kunowski@gmail.com> (https://github.com/BeerCoders)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/opstalent/youtube-player/issues"
+  },
+  "homepage": "https://github.com/opstalent/youtube-player#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "angular": "1.5.0-rc.2",
+    "angular-mocks": "1.5.0-rc.2",
+    "angular-module-mocks": "1.2.19",
+    "babel-core": "^6.4.5",
+    "babel-istanbul": "0.6.0",
+    "babel-loader": "^6.2.4",
+    "raw-loader": "0.5.1",
+    "babel-preset-es2015": "^6.3.13",
+    "istanbul": "0.4.2",
+    "istanbul-instrumenter-loader": "0.1.3",
+    "chai": "^3.5.0",
+    "karma": "0.13.19",
+    "karma-mocha": "^0.2.2",
+    "karma-chai": "^0.1.0",
+    "karma-sinon": "^1.0.4",
+    "karma-coverage": "0.5.3",
+    "karma-jasmine": "0.3.6",
+    "karma-phantomjs-launcher": "1.0.0",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-spec-reporter": "0.0.23",
+    "karma-webpack": "1.7.0",
+    "lodash": "4.0.1",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3",
+    "phantomjs-polyfill": "0.0.1",
+    "phantomjs-prebuilt": "2.1.3",
+    "webpack": "1.12.12"
+  }
+}

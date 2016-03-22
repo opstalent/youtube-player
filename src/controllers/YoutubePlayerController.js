@@ -12,27 +12,23 @@
 
 export class YoutubePlayerController {
 
-    var $scope;
-    var $interval;
-    var YT_event;
-
-    var progress = 0;
-    var duration = 0;
-    var interval = undefined;
-    var playerStatus = "NOT PLAYING";
-    var currentTime = 0;
-
     /**
      * @param $scope
      * @param $interval
      * @param YT_event
      */
     constructor($scope, $interval, YT_event) {
-        this.$scope = $scope;
-        this.$interval = $interval;
+        this.scope = $scope;
+        this.interval = $interval;
         this.YT_event = YT_event;
 
-        $scope.$on(YT_event.STATUS_CHANGE, function (event, data) {
+        this.progress = 0;
+        this.duration = 0;
+        this.playerStatus = "NOT PLAYING";
+        this.currentTime = 0;
+
+
+        scope.$on(YT_event.STATUS_CHANGE, function (event, data) {
             var player = data.player;
 
             this.playerStatus = data.message;
@@ -41,16 +37,16 @@ export class YoutubePlayerController {
             this.showProgress(player);
         });
 
-        $scope.$on(YT_event.PLAYER_READY, function (event, data) {
+        scope.$on(YT_event.PLAYER_READY, function (event, data) {
             this.duration = data.duration;
         });
     }
 
     sendControlEvent(ctrlEvent, args) {
         if (args) {
-            this.$scope.$broadcast(ctrlEvent, args);
+            this.scope.$broadcast(ctrlEvent, args);
         } else {
-            this.$scope.$broadcast(ctrlEvent);
+            this.scope.$broadcast(ctrlEvent);
         }
     }
 
