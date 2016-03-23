@@ -9,12 +9,9 @@
         var vm = this;
 
         vm.video = {
-            width: 345,
-            height: 190,
-            name: 'video1',
-            currentTime: 0,
-            videoid: 'M7lc1UVf-VE',
-            views: 123000
+            width: '100%',
+            height: '100%',
+            videoid: 'WeW5nxVQcgQ'
         };
     }
 

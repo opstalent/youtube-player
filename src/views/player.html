@@ -1,0 +1,26 @@
+<div class="video-player">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="player"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <a ng-hide="$ctrl.playerStatus === 'PLAYING'" ng-click="$ctrl.play()"><i class="fa fa-play"></i></a>
+            <a ng-show="$ctrl.playerStatus === 'PLAYING'" ng-click="$ctrl.pause()"><i class="fa fa-pause"></i></a>
+            <a ng-click="$ctrl.stop()"><i class="fa fa-stop"></i></a>
+            <span>{{$ctrl.time | videoTime}}</span>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="progress" ng-click="$ctrl.move($event)">
+                <div class="progress-bar progress-bar-info"
+                     role="progressbar"
+                     aria-valuenow="{{$ctrl.progress}}"
+                     aria-valuemin="0"
+                     aria-valuemax="{{$ctrl.duration}}"
+                     style="width:{{$ctrl.progress}}%">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

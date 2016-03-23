@@ -33,13 +33,13 @@ module.exports = {
         new webpack.ProvidePlugin({_: 'lodash'}),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
-        //new webpack.optimize.UglifyJsPlugin(
-        //    {
-        //        warning: false,
-        //        mangle: true,
-        //        comments: false
-        //    }
-        //)
+        new webpack.optimize.UglifyJsPlugin(
+            {
+                warning: false,
+                mangle: true,
+                comments: false
+            }
+        )
     ],
     module: {
         loaders: loaders

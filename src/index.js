@@ -10,7 +10,9 @@
  * file that was distributed with this source code.
  */
 
-import {YoutubePlayerComponent} from "./components/YoutubePlayerComponent";
+import {PlayerComponent} from "./components/PlayerComponent";
+import {Loader} from "./services/Loader";
+import {time} from "./filters/time";
 
 (function (root, factory) {
     'use strict';
@@ -30,7 +32,10 @@ function repository(angular) {
 
     angular
         .module(moduleName, [])
-        .component(moduleName, new YoutubePlayerComponent())
+        .component('youtubePlayer', new PlayerComponent())
+        .service('Loader', Loader)
+        .filter('videoTime', time)
     ;
+
     return moduleName;
 }
