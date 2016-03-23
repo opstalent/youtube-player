@@ -2,8 +2,9 @@
   "name": "youtube-player",
   "version": "0.1.0",
   "description": "Youtube Player Directive",
-  "main": "dist/angular-youtube-player.min.js",
+  "main": "index.js",
   "scripts": {
+    "start": "webpack --config webpack/webpack.dev.js --watch --NODE_ENV=dev",
     "test": "karma start --NODE_ENV=test",
     "build": "webpack --config webpack/webpack.build.js --NODE_ENV=production"
   },
@@ -32,6 +33,9 @@
     "babel-core": "^6.4.5",
     "babel-istanbul": "0.6.0",
     "babel-loader": "^6.2.4",
+    "browser-sync": "2.11.1",
+    "browser-sync-webpack-plugin": "1.0.1",
+    "html-webpack-plugin": "2.7.2",
     "raw-loader": "0.5.1",
     "babel-preset-es2015": "^6.3.13",
     "istanbul": "0.4.2",
