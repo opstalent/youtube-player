@@ -14,24 +14,23 @@ import YoutubePlayerComponent from "./components/YoutubePlayerComponent";
 
 (function (root, factory) {
     'use strict';
-    //if (typeof define === 'function' && define.amd) {
+    if (typeof define === 'function' && define.amd) {
         define(['angular'], factory);
-    //} else if (typeof module !== 'undefined' && typeof module.exports === 'object') {
-    //    module.exports = factory(require('angular'));
-    //} else {
-    //    return factory(root.angular);
-    //}
+    } else if (typeof module !== 'undefined' && typeof module.exports === 'object') {
+        module.exports = factory(require('angular'));
+    } else {
+        return factory(root.angular);
+    }
 }(this, repository));
 
 function repository(angular) {
     'use strict';
 
-    var moduleName = 'YoutubePlayer';
+    var moduleName = 'youtube-player';
 
     angular
         .module(moduleName, [])
-        .component("youtube-player", YoutubePlayerComponent)
+        .component(moduleName, new YoutubePlayerComponent())
     ;
-
     return moduleName;
 }

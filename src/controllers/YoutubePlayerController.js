@@ -18,6 +18,7 @@ export default class YoutubePlayerController {
      * @param YT_event
      */
     constructor($scope, $interval, YT_event) {
+console.log($scope);
         this.scope = $scope;
         this.interval = $interval;
         this.YT_event = YT_event;
@@ -28,7 +29,7 @@ export default class YoutubePlayerController {
         this.currentTime = 0;
 
 
-        scope.$on(YT_event.STATUS_CHANGE, function (event, data) {
+        $scope.$on(YT_event.STATUS_CHANGE, function (event, data) {
             var player = data.player;
 
             this.playerStatus = data.message;
@@ -37,7 +38,7 @@ export default class YoutubePlayerController {
             this.showProgress(player);
         });
 
-        scope.$on(YT_event.PLAYER_READY, function (event, data) {
+        $scope.$on(YT_event.PLAYER_READY, function (event, data) {
             this.duration = data.duration;
         });
     }

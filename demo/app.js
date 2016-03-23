@@ -2,6 +2,6 @@
     'use strict';
 
     angular
-        .module('App', ['YoutubePlayer'])
+        .module('App', ['youtube-player'])
         .run();
 }());
