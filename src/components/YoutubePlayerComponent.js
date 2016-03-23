@@ -10,9 +10,9 @@
  * file that was distributed with this source code.
  */
 
-import {YoutubePlayerController} from "./../controllers/YoutubePlayerController";
+import YoutubePlayerController from "./../controllers/YoutubePlayerController";
 
-export class YoutubePlayerComponent {
+export default class YoutubePlayerComponent {
     constructor() {
         this.bindings = {
             videoid: "@",
@@ -30,6 +30,7 @@ export class YoutubePlayerComponent {
         this.template = require('./../views/youtubePlayer.html');
         this.controller = YoutubePlayerController;
     }
+
     link(scope, element, attrs, $rootScope) {
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";

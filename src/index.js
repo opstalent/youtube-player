@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-import {YoutubePlayerController} from "./components/YoutubePlayerComponent";
+import YoutubePlayerComponent from "./components/YoutubePlayerComponent";
 
 (function (root, factory) {
     'use strict';
@@ -30,7 +30,7 @@ function repository(angular) {
 
     angular
         .module(moduleName, [])
-        .component("youtube-player", new YoutubePlayerController())
+        .component("youtube-player", YoutubePlayerComponent)
     ;
 
     return moduleName;
