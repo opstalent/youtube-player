@@ -10,12 +10,11 @@
  * file that was distributed with this source code.
  */
 
-import YoutubePlayerController from "./../controllers/YoutubePlayerController";
+import {YoutubePlayerController} from "./../controllers/YoutubePlayerController";
 
-export default class YoutubePlayerComponent {
+export class YoutubePlayerComponent {
 
     constructor() {
-        console.log("3");
         this.bindings = {
             videoid: "@",
             height: "@",
@@ -34,7 +33,6 @@ export default class YoutubePlayerComponent {
     }
 
     link(scope, element, attrs, $rootScope) {
-        console.log("2");
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];

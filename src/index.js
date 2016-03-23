@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-import YoutubePlayerComponent from "./components/YoutubePlayerComponent";
+import {YoutubePlayerComponent} from "./components/YoutubePlayerComponent";
 
 (function (root, factory) {
     'use strict';

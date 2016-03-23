@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-export default class YoutubePlayerController {
+export class YoutubePlayerController {
 
     /**
      * @param $scope
@@ -18,7 +18,6 @@ export default class YoutubePlayerController {
      * @param YT_event
      */
     constructor($scope, $interval, YT_event) {
-console.log($scope);
         this.scope = $scope;
         this.interval = $interval;
         this.YT_event = YT_event;
