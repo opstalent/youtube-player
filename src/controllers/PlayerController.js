@@ -20,6 +20,7 @@ export class PlayerController {
      */
     constructor($scope, $interval, $element, Loader) {
         this.$interval = $interval;
+        this.$element = $element;
         this.playerStatus = "NOT PLAYING";
         this.interval = undefined;
         this.player = undefined;
@@ -31,50 +32,7 @@ export class PlayerController {
         let firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        let playerElement = $element.children()[0].getElementsByClassName("player")[0];
-
-        Loader.whenLoaded().then(() => {
-            this.player = new YT.Player(playerElement, {
-                playerVars: this.options || {
-                    autoplay: 0,
-                    html5: 1,
-                    theme: "light",
-                    modesbranding: 0,
-                    color: "white",
-                    iv_load_policy: 3,
-                    showinfo: 0,
-                    controls: 0
-                },
-                height: this.height,
-                width: this.width,
-                videoId: this.videoid,
-
-                events: {
-                    'onStateChange': (event) => {
-                        switch (event.data) {
-                            case YT.PlayerState.PLAYING:
-                                this.playerStatus = "PLAYING";
-                                break;
-                            case YT.PlayerState.ENDED:
-                                this.playerStatus = "ENDED";
-                                break;
-                            case YT.PlayerState.UNSTARTED:
-                                this.playerStatus = "NOT PLAYING";
-                                break;
-                            case YT.PlayerState.BUFFERING:
-                                this.playerStatus = "BUFFERING";
-                                break;
-                            case YT.PlayerState.CUED:
-                                this.playerStatus = "CUED";
-                                break;
-                            case YT.PlayerState.PAUSED:
-                                this.playerStatus = "PAUSED";
-                                break;
-                        }
-                    }
-                }
-            });
-        });
+        Loader.whenLoaded().then(this.whenLoaded.bind(this));
 
         $scope.$watch('height + width', this.onSize.bind(this));
         $scope.$watch('videoid', this.onId.bind(this));
@@ -143,6 +101,52 @@ export class PlayerController {
         }
 
         this.player.loadVideoById(this.videoid);
+    }
+
+    whenLoaded() {
+        let playerElement = this.$element.children()[0].getElementsByClassName("player")[0];
+
+        this.player = new YT.Player(playerElement, {
+            playerVars: this.options || {
+                autoplay: 0,
+                html5: 1,
+                theme: "light",
+                modesbranding: 0,
+                color: "white",
+                iv_load_policy: 3,
+                showinfo: 0,
+                controls: 0
+            },
+            height: this.height,
+            width: this.width,
+            videoId: this.videoid,
+
+            events: {
+                'onStateChange': (event) => {
+                    console.log(event);
+                    switch (event.data) {
+                        case YT.PlayerState.PLAYING:
+                            this.playerStatus = "PLAYING";
+                            break;
+                        case YT.PlayerState.ENDED:
+                            this.playerStatus = "ENDED";
+                            break;
+                        case YT.PlayerState.UNSTARTED:
+                            this.playerStatus = "NOT PLAYING";
+                            break;
+                        case YT.PlayerState.BUFFERING:
+                            this.playerStatus = "BUFFERING";
+                            break;
+                        case YT.PlayerState.CUED:
+                            this.playerStatus = "CUED";
+                            break;
+                        case YT.PlayerState.PAUSED:
+                            this.playerStatus = "PAUSED";
+                            break;
+                    }
+                }
+            }
+        });
     }
 }
 
