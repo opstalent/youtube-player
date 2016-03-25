@@ -26,11 +26,6 @@ export class PlayerController {
         this.progress = 0;
         this.time = 0;
 
-        let tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        let firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
         let playerElement = $element.children()[0].getElementsByClassName("player")[0];
 
         Loader.whenLoaded().then(() => {

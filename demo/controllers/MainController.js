@@ -10,7 +10,7 @@
 
         vm.video = {
             width: '100%',
-            height: '100%',
+            height: '800',
             videoid: 'WeW5nxVQcgQ'
         };
     }
