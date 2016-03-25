@@ -21,12 +21,12 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['mocha', 'chai', 'sinon'],
         files: [
-            'test/**/*.ts'
+            'tests/**/*.spec.js'
         ],
         exclude: [
         ],
         preprocessors: {
-            'test/**/*.spec.ts': ['webpack'],
+            'test/**/*.spec.js': ['webpack'],
             'src/**/!(*.spec)+(.js)': ['coverage']
         },
         webpack: {

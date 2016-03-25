@@ -14,10 +14,10 @@ var loaders = require("./loaders");
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './tests/index.js',
+    entry: './dist/angular-youtube-player.js',
     output: {
         filename: 'angular-youtube-player.js',
-        path: 'tmp'
+        path: 'dist'
     },
     resolve: {
         root: __dirname,
@@ -34,7 +34,7 @@ module.exports = {
         loaders: loaders,
         postLoaders: [
             {
-                test: /^((?!\.spec\.ts).)*.ts$/,
+                test: /^((?!\.spec\.js).)*.js$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'istanbul-instrumenter'
             }
