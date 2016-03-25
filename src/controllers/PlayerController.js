@@ -27,11 +27,6 @@ export class PlayerController {
         this.progress = 0;
         this.time = 0;
 
-        let tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        let firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
         Loader.whenLoaded().then(this.whenLoaded.bind(this));
 
         $scope.$watch('height + width', this.onSize.bind(this));
