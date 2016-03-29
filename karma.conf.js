@@ -13,22 +13,19 @@
 'use strict';
 
 var webpackConfig = require('./webpack/webpack.test.js');
-require('phantomjs-polyfill')
+require('phantomjs-polyfill');
 webpackConfig.entry = {};
 
 module.exports = function (config) {
     config.set({
         basePath: '',
         frameworks: ['mocha', 'chai', 'sinon'],
-        files: [
-            'tests/**/*.spec.js'
-        ],
-        exclude: [
-        ],
+        files: [{pattern: 'tests/test.js', watched: false}],
         preprocessors: {
-            'test/**/*.spec.js': ['webpack'],
+            'tests/test.js': ['webpack', 'sourcemap'],
             'src/**/!(*.spec)+(.js)': ['coverage']
         },
+        exclude: [],
         webpack: {
             module: webpackConfig.module,
             resolve: webpackConfig.resolve
