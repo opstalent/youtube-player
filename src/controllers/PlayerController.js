@@ -22,15 +22,18 @@ export class PlayerController {
         this.$interval = $interval;
         this.$element = $element;
         this.playerStatus = "NOT PLAYING";
+        this.playerStatuses = {
+            PLAYING: "PLAYING",
+            ENDED: "ENDED",
+            UNSTARTED: "NOT PLAYING",
+            BUFFERING: "BUFFERING",
+            CUED: "CUED",
+            PAUSED: "PAUSED"
+        };
         this.interval = undefined;
         this.player = undefined;
         this.progress = 0;
         this.time = 0;
-
-        let tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        let firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         Loader.whenLoaded().then(this.whenLoaded.bind(this));
 
@@ -41,19 +44,25 @@ export class PlayerController {
     stop() {
         if (this.player) {
             this.player.stopVideo();
+            return this.playerStatuses.UNSTARTED;
         }
+        return false;
     }
 
     play() {
         if (this.player) {
             this.player.playVideo();
+            return this.playerStatuses.PLAYING;
         }
+        return false;
     }
 
     pause() {
         if (this.player) {
             this.player.pauseVideo();
+            return this.playerStatuses.PAUSED;
         }
+        return false;
     }
 
     move(event) {
@@ -67,7 +76,9 @@ export class PlayerController {
 
         if (this.player) {
             this.player.seekTo(currentTime);
+            return currentTime;
         }
+        return false;
     }
 
     showProgress() {
@@ -85,6 +96,7 @@ export class PlayerController {
                 this.interval = undefined;
             }
         }
+        return this.progress;
     }
 
     onSize(newValue, oldValue) {
@@ -93,6 +105,7 @@ export class PlayerController {
         }
 
         this.player.setSize(this.width, this.height);
+        return {width: this.width, height: this.height};
     }
 
     onId(newValue, oldValue) {
@@ -101,6 +114,7 @@ export class PlayerController {
         }
 
         this.player.loadVideoById(this.videoid);
+        return this.videoid;
     }
 
     whenLoaded() {
@@ -147,6 +161,7 @@ export class PlayerController {
                 }
             }
         });
+        return this.playerStatus;
     }
 }
 
