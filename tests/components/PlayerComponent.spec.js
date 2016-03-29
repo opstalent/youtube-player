@@ -26,7 +26,7 @@ describe("PlayerComponent", function () {
         scope = $rootScope.$new();
         element = angular.element('<youtube-player width="' + width + '" height="' + height + '" videoid="' + videoid + '" options="' + options + '"></youtube-player>');
 
-        $compile(element)(scope);
+        element = $compile(element)(scope);
     }));
 
     it('Should has height', function () {
