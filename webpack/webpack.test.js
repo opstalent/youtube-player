@@ -14,9 +14,9 @@ var loaders = require("./loaders");
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './dist/angular-youtube-player.js',
+    entry: './dist/angular-youtube-player.min.js',
     output: {
-        filename: 'angular-youtube-player.js',
+        filename: 'angular-youtube-player.min.js',
         path: 'dist'
     },
     resolve: {
@@ -25,9 +25,6 @@ module.exports = {
     },
     resolveLoader: {
         modulesDirectories: ["node_modules"]
-    },
-    externals: {
-        'angular': 'angular'
     },
     devtool: "source-map-inline",
     module: {
