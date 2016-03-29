@@ -1,7 +1,6 @@
 import {expect} from 'chai';
 import 'angular';
 import 'angular-mocks/angular-mocks';
-import "/src/index";
 
 describe("PlayerComponent", () => {
     var scope, element;
